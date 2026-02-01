@@ -248,20 +248,20 @@ class BudgetTrackerApp:
             # and not showing it in terminal
             messagebox.showerror("Error", "All fields should be filled in")
 
+
+
+    #Creating a graphical interface where it will display the entries seperated from the main interface
     def view_entries(self):
-        # temporary output to terminal
-        print("This is the view of the information you have stored")
-        print(df)
+        global df
+        top = tk.Toplevel(self.root)
+        top.title("View Entries")
 
+        text = tk.Text(top)
+        text.pack()
 
-    
-            # ---- workaround for VS Code debugger repaint lag ----
-        def force_redraw(event=None):
-            self.root.update_idletasks()
+        for index,row in df.itterowws():
+            text.insert(tk.END, "Date: " + row['Date'], "Description: " + row['Description'], "Amount: " + str(row['Amount']),"Type: " + row['Type'] + "\n"  )
 
-        for entry in (self.entry_date, self.entry_description, self.entry_amount, self.entry_type):
-            entry.bind("<KeyRelease>", force_redraw)
-            entry.bind("<FocusIn>", force_redraw)
 
 
 # creates the window application
