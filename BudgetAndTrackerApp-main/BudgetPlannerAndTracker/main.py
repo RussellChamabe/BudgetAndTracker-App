@@ -106,6 +106,13 @@ class BudgetTrackerApp:
             # Opens another user interface to display the message
             messagebox.showinfo("Saved", "Everything has been stored!")
 
+            #deleting everyword from the first position of the entry till the end. This basically clears information when an entry has been submitted
+            self.entry_date.delete(0, tk.END)
+            self.entry_description.delete(0, tk.END)
+            self.entry_type.delete(0, tk.END)
+            self.entry_amount.delete(0, tk.END)
+
+
         else:
             # Opens another user interface to display the message
             # and not showing it in terminal
